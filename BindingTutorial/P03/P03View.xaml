@@ -1,0 +1,29 @@
+﻿<Page
+    x:Class="BindingTutorial.P03.P03View"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:BindingTutorial"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <local:IntegerToDoubleConverter x:Key="IntegerToDoubleConverter" />
+    </Page.Resources>
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Margin="0, 40, 0, 0">
+        <StackPanel Orientation="Vertical">
+            <Button Grid.Row="0" x:Name="button" Content="+" Click="button_Click"/>
+            <StackPanel Grid.Row="1">
+
+                <Slider x:Name="studentCountSlider" Value="{x:Bind classroom.studentCount, Mode=TwoWay, Converter={StaticResource IntegerToDoubleConverter}}" />
+
+            </StackPanel>
+
+            <StackPanel Grid.Row="2" Orientation="Horizontal">
+                <TextBlock x:Name="textBlock" >Nombre d'élèves:</TextBlock>
+                <TextBlock x:Name="studentCountTextBlock" Text="{x:Bind classroom.studentCount, Mode=OneWay}"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>
